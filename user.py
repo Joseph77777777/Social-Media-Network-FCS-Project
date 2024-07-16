@@ -17,7 +17,7 @@ class User:
         # parameter friend_Name: Name of the new friend
 
         friend_exist=False
-        for  f  in self.friendsList:#Traversing the list to check if the friend index exist in the list
+        for  f  in self.friendsList:#Traversing the list to check if the friend  exist in the list
             if f[0]==friend_Id :
                 friend_exist=True
                 break
@@ -25,9 +25,26 @@ class User:
         if  friend_exist==False:#if not exist it will be added to the list
             self.friendsList.append(friend_Id,friend_Name)
         else:
-            print("The friend with ID"+str(friend_Id)+"and name "+friend_Name+"is already added")
+            print("The friend with ID: "+str(friend_Id)+"and name: "+friend_Name+"is already added")
+
+    def unfollow_friend(self,friend_Id,friend_Name):
+        # removing friend to the friend list
+        # parameter friend_Id: ID for the existing friend
+        # parameter friend_Name: Name of the existing friend
+
+        friend_exist=False
+        for  f  in self.friendsList:#Traversing the list to check if the friend  exist in the list
+            if f[0]==friend_Id :
+                friend_exist=True
+                break
+        
+        if  friend_exist==True:#if exist it will be removed from the list
+            self.friendsList.remove(friend_Id,friend_Name)
+        else:
+            print("The friend with ID: "+str(friend_Id)+"and name: "+friend_Name+"doesnt exist")
+
             
-       
+    
 
 
 
