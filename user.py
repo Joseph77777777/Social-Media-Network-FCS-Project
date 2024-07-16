@@ -24,24 +24,25 @@ class User:
         
         if  friend_exist==False:#if not exist it will be added to the list
             self.friendsList.append((friend_Id,friend_Name))
+            self.size_friendsList+=1
         else:
             print("The friend with ID: "+str(friend_Id)+" is already added")
 
-    def unfollow_friend(self,friend_Id,friend_Name):
-        # removing friend to the friend list
+    def unfollow_friend(self,friend_Id):
+        # removing friend from the friend list
         # parameter friend_Id: ID for the existing friend
         # parameter friend_Name: Name of the existing friend
 
-        friend_exist=False
-        for  f  in self.friendsList:#Traversing the list to check if the friend  exist in the list
-            if f[0]==friend_Id :
-                friend_exist=True
+        friend_exist = False
+        for f in self.friendsList:
+            if f[0] == friend_Id:
+                friend_exist = True
+                self.friendsList.remove(f)
+                self.size_friendsList -= 1
                 break
-        
-        if  friend_exist==True:#if exist it will be removed from the list
-            self.friendsList.remove((friend_Id,friend_Name))
-        else:
-            print("The friend with ID: "+str(friend_Id)+"and name: "+friend_Name+"doesnt exist")
+
+        if  friend_exist==False:
+            print("The friend with ID: " + str(friend_Id) + " doesn't exist")
 
     def __str__(self) :
         friendsList=" "
@@ -54,7 +55,10 @@ class User:
 user=User(1,"Joseph Nakhle")
 user.add_friend(1,"Salim")
 user.add_friend(2,"sara")
-user.add_friend(2,"Joe")
+
+print(user)
+
+user.unfollow_friend(1)
 
 print(user)
 
