@@ -8,7 +8,7 @@ class User:
         self.userId = userId
         self.fullName = fullName
         self.friendsList = []
-        self.posts = posts
+        self.posts = []
         self.size_friendsList=0
 
     def add_friend(self,friend_Id,friend_Name):
@@ -43,24 +43,28 @@ class User:
 
         if  friend_exist==False:
             print("The friend with ID: " + str(friend_Id) + " doesn't exist")
+            
+    def post_Update(self,new_post):
+        # adding new post to the users post
+        self.posts.append(new_post)
 
     def __str__(self) :
         friendsList=" "
         for friend_Id,friend_Name in self.friendsList:
             friendsList+="ID: "+str(friend_Id)+"/"+friend_Name+","
-        return "User(" + str(self.userId) + ", " + self.fullName + ", Friends: [" + friendsList + "])"
+        return "User(" + str(self.userId) + ", " + self.fullName +","+str(self.posts) + ", Friends: [" + friendsList + "])"
+    
+    
+    
+user=User(1,"Joseph")
+user.add_friend(1,"Elias")
+user.post_Update("My post")
+
+print(user)
 
 
             
-user=User(1,"Joseph Nakhle")
-user.add_friend(1,"Salim")
-user.add_friend(2,"sara")
 
-print(user)
-
-user.unfollow_friend(1)
-
-print(user)
 
 
 
