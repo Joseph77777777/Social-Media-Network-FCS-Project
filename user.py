@@ -43,6 +43,13 @@ class User:
         else:
             print("The friend with ID: "+str(friend_Id)+"and name: "+friend_Name+"doesnt exist")
 
+    def __str__(self) :
+        friendsList=" "
+        for friend_Id,friend_Name in self.friendsList:
+            friendsList+="ID: "+str(friend_Id)+"/"+friend_Name+","
+        return "User(" + str(self.userId) + ", " + self.fullName + ", Friends: [" + friendsList + "])"
+
+
             
     
 
