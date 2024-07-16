@@ -54,7 +54,7 @@ class User:
 user=User(1,"Joseph Nakhle")
 user.add_friend(1,"Salim")
 user.add_friend(2,"sara")
-user.add_friend(2,"labib")
+user.add_friend(2,"Joe")
 
 print(user)
 
