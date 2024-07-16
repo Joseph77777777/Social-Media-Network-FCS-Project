@@ -23,9 +23,9 @@ class User:
                 break
         
         if  friend_exist==False:#if not exist it will be added to the list
-            self.friendsList.append(friend_Id,friend_Name)
+            self.friendsList.append((friend_Id,friend_Name))
         else:
-            print("The friend with ID: "+str(friend_Id)+"and name: "+friend_Name+"is already added")
+            print("The friend with ID: "+str(friend_Id)+" is already added")
 
     def unfollow_friend(self,friend_Id,friend_Name):
         # removing friend to the friend list
@@ -39,7 +39,7 @@ class User:
                 break
         
         if  friend_exist==True:#if exist it will be removed from the list
-            self.friendsList.remove(friend_Id,friend_Name)
+            self.friendsList.remove((friend_Id,friend_Name))
         else:
             print("The friend with ID: "+str(friend_Id)+"and name: "+friend_Name+"doesnt exist")
 
@@ -51,7 +51,12 @@ class User:
 
 
             
-    
+user=User(1,"Joseph Nakhle")
+user.add_friend(1,"Salim")
+user.add_friend(2,"sara")
+user.add_friend(2,"labib")
+
+print(user)
 
 
 
