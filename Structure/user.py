@@ -54,13 +54,7 @@ class User:
             friendsList+="ID: "+str(friend_Id)+"/"+friend_Name+","
         return "User(" + str(self.userId) + ", " + self.fullName +","+str(self.posts) + ", Friends: [" + friendsList + "])"
     
-    
-    
-user=User(1,"Joseph")
-user.add_friend(1,"Elias")
-user.post_Update("My post")
 
-print(user)
 
 
             
