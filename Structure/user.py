@@ -9,7 +9,7 @@ class User:
         self.fullName = fullName
         self.friendsList = []
         self.posts = []
-        self.size_friendsList=0
+        #self.size_friendsList=0
 
     def add_friend(self,friend_Id,friend_Name):
         # adding friend to the friend list
@@ -24,7 +24,7 @@ class User:
         
         if  friend_exist==False:#if not exist it will be added to the list
             self.friendsList.append((friend_Id,friend_Name))
-            self.size_friendsList+=1
+            #self.size_friendsList+=1
         else:
             print("The friend with ID: "+str(friend_Id)+" is already added")
 
@@ -38,7 +38,7 @@ class User:
             if f[0] == friend_Id:
                 friend_exist = True
                 self.friendsList.remove(f)
-                self.size_friendsList -= 1
+                #self.size_friendsList -= 1
                 break
 
         if  friend_exist==False:

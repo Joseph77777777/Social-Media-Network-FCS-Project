@@ -3,7 +3,7 @@ from Structure import User
 class Users:
     def __init__(self):
         self.list_of_users={}#Creating a dictionary to store users
-        self.size=0
+        #self.size=0
     
     def add_new_user(self, userId, fullName, posts=None):
         #Adding a new user to the list of users.
@@ -14,7 +14,7 @@ class Users:
         if userId not in self.list_of_users:
             new_user=User(userId, fullName, posts)
             self.list_of_users[userId]=new_user
-            self.size+=1
+            #self.size+=1
         else:
             print("The user "+fullName+"with ID "+userId+" already exist")
     
@@ -69,7 +69,31 @@ class Users:
             dict_sorted[user.userId] = user
         return dict_sorted
 
+    def add_friend_toUser(self,logged_in_user,userId):
+        #Adding a new user to the list of users.
+        #userId: ID for the new user
+        #fullName: Name of the new user
+        #posts: List of posts made by the user
 
+        if userId not in self.list_of_users:
+            print("The user with ID "+str(userId)+" doesnt exist")
+        else:
+            user_name=self.list_of_users[userId].fullName
+            logged_in_user.add_friend(userId,user_name)
+
+U1=Users()
+U1.add_new_user(1,"Joe",[])
+U1.add_new_user(2,"Mj",[])
+
+print(U1)
+print(U1.search_byId(1))
+J=U1.search_byId(1)
+U1.add_friend_toUser(J,3)
+print(J)
+# J.add_friend(2,"MjA")
+# print(J)
+# J.add_friend(3,"Michelle")
+# print(J)
 
   
 
