@@ -42,8 +42,15 @@ class Users:
                 return u
             else:
                 print("The user with name "+fullName+" is not found")
-    
-    
+
+    def __str__(self):
+        #Displaying the list of users
+        users_list=""
+        for userId,name in self.list_of_users.items():
+            users_list+=str(userId)+", "+name.fullName +"\n"
+        return users_list
+
+
   
 
     
