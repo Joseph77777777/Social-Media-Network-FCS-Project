@@ -91,6 +91,12 @@ class Users:
             print("The user with ID "+str(userId)+" doesnt exist")
         else:
             logged_in_user.remove_friend(userId)
+
+    def update_post_forUser(self,logged_in_user,post):
+        if logged_in_user.userId not in self.list_of_users:
+            print("User doesnt exist")
+        else:
+            logged_in_user.post_Update(post)
     
 
 U1=Users()
@@ -107,6 +113,8 @@ U1.add_friend_toUser(J,2)
 print(J)
 U1.remove_friend_fromUser(J,3)
 U1.remove_friend_fromUser(J,2)
+print(J)
+U1.update_post_forUser(J,"my first post")
 print(J)
 # J.add_friend(2,"MjA")
 # print(J)
