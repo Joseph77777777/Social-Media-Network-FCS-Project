@@ -70,10 +70,9 @@ class Users:
         return dict_sorted
 
     def add_friend_toUser(self,logged_in_user,userId):
-        #Adding a new user to the list of users.
-        #userId: ID for the new user
-        #fullName: Name of the new user
-        #posts: List of posts made by the user
+        #Adding a friend to user and checking if this friend exist in the list of users
+        #userId: ID for the new user I want to become friend 
+        #logged_in_user : The main user
         if logged_in_user.userId==userId:
             print("You cant add your self")
     
@@ -84,10 +83,9 @@ class Users:
             logged_in_user.add_friend(userId,user_name)
 
     def remove_friend_fromUser(self,logged_in_user,userId):
-        #Adding a new user to the list of users.
-        #userId: ID for the new user
-        #fullName: Name of the new user
-        #posts: List of posts made by the user
+        #removing a friend from user and checking if this friend exist in the list of users
+        #userId: ID for the new user I want to remove as a friend 
+        #logged_in_user : The main user
 
         if userId not in self.list_of_users:
             print("The user with ID "+str(userId)+" doesnt exist")
