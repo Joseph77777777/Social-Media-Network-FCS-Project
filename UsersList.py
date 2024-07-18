@@ -28,13 +28,20 @@ class Users:
     def search_byId(self,userId):
         #Searching a user by ID using linear search algorithm
 
-        for u in self.list_of_users.values():#iterating through all the values in the list_of_users dictionary.
+        for u in self.list_of_users.values():#iterating through all the values in the list_of_users dictionary
             if u.userId==userId:
                 return u
             else:
                 print("The user with ID "+userId+" is not found")
             
-    
+    def search_byName(self,fullName):
+        #Searching a user by name using linear search algorithm
+
+        for u in self.list_of_users.values():#iterating through all the values in the list_of_users dictionary
+            if u.fullName==fullName:
+                return u
+            else:
+                print("The user with name "+fullName+" is not found")
     
     
   
