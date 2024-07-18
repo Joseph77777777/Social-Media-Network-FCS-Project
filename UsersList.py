@@ -74,8 +74,10 @@ class Users:
         #userId: ID for the new user
         #fullName: Name of the new user
         #posts: List of posts made by the user
-
-        if userId not in self.list_of_users:
+        if logged_in_user.userId==userId:
+            print("You cant add your self")
+    
+        elif userId not in self.list_of_users:
             print("The user with ID "+str(userId)+" doesnt exist")
         else:
             user_name=self.list_of_users[userId].fullName
@@ -100,6 +102,8 @@ U1.add_new_user(2,"Mj",[])
 print(U1)
 print(U1.search_byId(1))
 J=U1.search_byId(1)
+U1.add_friend_toUser(J,1)
+
 U1.add_friend_toUser(J,3)
 U1.add_friend_toUser(J,2)
 print(J)
