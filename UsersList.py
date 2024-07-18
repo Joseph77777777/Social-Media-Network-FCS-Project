@@ -59,6 +59,15 @@ class Users:
                     min=j
             lst[i],lst[min]=lst[min],lst[i]
         return lst
+    
+    def users_sorted_byName(self):
+        lst_users = list(self.list_of_users.values())  # Convert dictionary values to a list
+        sorted_users = self.selectionSort(lst_users)  # Sort the list using selection sort
+        #Convert sorted list to dictionary
+        dict_sorted = {}
+        for user in sorted_users:
+            dict_sorted[user.userId] = user
+        return dict_sorted
 
 
 
