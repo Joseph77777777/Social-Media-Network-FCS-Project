@@ -49,6 +49,17 @@ class Users:
         for userId,name in self.list_of_users.items():
             users_list+=str(userId)+", "+name.fullName +"\n"
         return users_list
+    
+    def selectionSort(self,lst):
+        #Sorting a list using selection sort algorithm
+        for i in range(len(lst)-1):
+            min=i
+            for j in range (i+1,len(lst)):
+                if lst[j]<lst[min]:
+                    min=j
+            lst[i],lst[min]=lst[min],lst[i]
+        return lst
+
 
 
   
