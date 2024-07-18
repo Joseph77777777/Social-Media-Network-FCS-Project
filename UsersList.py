@@ -81,6 +81,18 @@ class Users:
             user_name=self.list_of_users[userId].fullName
             logged_in_user.add_friend(userId,user_name)
 
+    def remove_friend_fromUser(self,logged_in_user,userId):
+        #Adding a new user to the list of users.
+        #userId: ID for the new user
+        #fullName: Name of the new user
+        #posts: List of posts made by the user
+
+        if userId not in self.list_of_users:
+            print("The user with ID "+str(userId)+" doesnt exist")
+        else:
+            logged_in_user.remove_friend(userId)
+    
+
 U1=Users()
 U1.add_new_user(1,"Joe",[])
 U1.add_new_user(2,"Mj",[])
@@ -89,6 +101,10 @@ print(U1)
 print(U1.search_byId(1))
 J=U1.search_byId(1)
 U1.add_friend_toUser(J,3)
+U1.add_friend_toUser(J,2)
+print(J)
+U1.remove_friend_fromUser(J,3)
+U1.remove_friend_fromUser(J,2)
 print(J)
 # J.add_friend(2,"MjA")
 # print(J)

@@ -28,7 +28,7 @@ class User:
         else:
             print("The friend with ID: "+str(friend_Id)+" is already added")
 
-    def unfollow_friend(self,friend_Id):
+    def remove_friend(self,friend_Id):
         # removing friend from the friend list
         # parameter friend_Id: ID for the existing friend
         # parameter friend_Name: Name of the existing friend
