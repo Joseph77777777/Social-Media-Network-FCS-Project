@@ -1,5 +1,11 @@
-from Structure import User
+import networkx 
+import sys
+import os
 
+# Add the top-level directory to sys.path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from Structure.user import User
 class Users:
     def __init__(self):
         self.list_of_users={}#Creating a dictionary to store users
@@ -70,7 +76,7 @@ class Users:
             dict_sorted[user.userId] = user
         return dict_sorted
 
-    def add_friend_toUser(self,logged_in_user,userId):
+    def follow_User(self,logged_in_user,userId):
         #Adding a friend to user and checking if this friend exist in the list of users
         #userId: ID for the new user I want to become friend 
         #logged_in_user : The main user
@@ -83,7 +89,7 @@ class Users:
             user_name=self.list_of_users[userId].fullName
             logged_in_user.add_friend(userId,user_name)
 
-    def remove_friend_fromUser(self,logged_in_user,userId):
+    def unfollow_User(self,logged_in_user,userId):
         #removing a friend from user and checking if this friend exist in the list of users
         #userId: ID for the new user I want to remove as a friend 
         #logged_in_user : The main user
@@ -98,19 +104,21 @@ class Users:
             print("User doesnt exist")
         else:
             logged_in_user.post_Update(post)
+
+
     
 
 U1=Users()
-U1.add_new_user(1,"Joe",[])
+U1.add_new_user(1,"oe",[])
 U1.add_new_user(2,"Mj",[])
 
 print(U1)
 print(U1.search_byId(1))
 J=U1.search_byId(1)
-U1.add_friend_toUser(J,1)
+U1.follow_User(J,1)
 
-U1.add_friend_toUser(J,3)
-U1.add_friend_toUser(J,2)
+U1.follow_User(J,3)
+U1.follow_User(J,2)
 print(J)
 
 sorted_users = U1.users_sorted_byName()
@@ -123,10 +131,10 @@ for userId, user in sorted_users.items():
 # print(J)
 
 
-# J.add_friend(2,"MjA")
-# print(J)
-# J.add_friend(3,"Michelle")
-# print(J)
+# # J.add_friend(2,"MjA")
+# # print(J)
+# # J.add_friend(3,"Michelle")
+# # print(J)
 
   
 
