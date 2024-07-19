@@ -3,7 +3,7 @@ from Structure import User
 class Users:
     def __init__(self):
         self.list_of_users={}#Creating a dictionary to store users
-        #self.size=0
+        
     
     def add_new_user(self, userId, fullName, posts=None):
         #Adding a new user to the list of users.
@@ -14,7 +14,7 @@ class Users:
         if userId not in self.list_of_users:
             new_user=User(userId, fullName, posts)
             self.list_of_users[userId]=new_user
-            #self.size+=1
+            
         else:
             print("The user "+fullName+"with ID "+userId+" already exist")
     
@@ -55,9 +55,10 @@ class Users:
         for i in range(len(lst)-1):
             min=i
             for j in range (i+1,len(lst)):
-                if lst[j]<lst[min]:
+                if lst[j].fullName<lst[min].fullName:
                     min=j
-            lst[i],lst[min]=lst[min],lst[i]
+            if min!= i:
+             lst[i],lst[min]=lst[min],lst[i]
         return lst
     
     def users_sorted_byName(self):
@@ -111,11 +112,17 @@ U1.add_friend_toUser(J,1)
 U1.add_friend_toUser(J,3)
 U1.add_friend_toUser(J,2)
 print(J)
-U1.remove_friend_fromUser(J,3)
-U1.remove_friend_fromUser(J,2)
-print(J)
-U1.update_post_forUser(J,"my first post")
-print(J)
+
+sorted_users = U1.users_sorted_byName()
+for userId, user in sorted_users.items():
+    print("User ID: "+str(userId)+ ", " +"Name:"+user.fullName)
+# U1.remove_friend_fromUser(J,3)
+# U1.remove_friend_fromUser(J,2)
+# print(J)
+# U1.update_post_forUser(J,"my first post")
+# print(J)
+
+
 # J.add_friend(2,"MjA")
 # print(J)
 # J.add_friend(3,"Michelle")
