@@ -131,6 +131,17 @@ class Users:
         Average = total_numbers_friends / number_of_users 
 
         print("The average number of friends per user is : "+str(Average))
+
+        #Network density
+        max_number_edges=number_of_users*(number_of_users - 1)#number_of_users are the vertices
+        #In a directed graph the maximum number of edges is V*(V-1)
+        if max_number_edges>0:
+          density=self.Network.number_of_edges() / max_number_edges
+        else:
+            return
+        print("The Network density is: "+str(density))
+    
+
     
 
           
@@ -152,7 +163,7 @@ J=U1.search_byId(1)
 U1.follow_User(J,2)
 U1.follow_User(J,3)
 
-U1.Network_Statistics()
+
 
 
 #print(J)
