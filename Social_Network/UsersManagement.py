@@ -146,8 +146,7 @@ class Users:
         #Explores the social network level by level. 
         # It starts from a given user (root node) and visits all their direct friends first, 
         # then their friends' friends, and so on. 
-        # This is useful for finding the shortest path in terms of the number of edges from the start user 
-        # to any other user in the network.
+        
         if start not in self.list_of_users:
             print("The user with ID "+str(start.userId)+ "doesnt exist")
 
@@ -168,7 +167,30 @@ class Users:
         print("BFS Traversal starting from user ID",+ str(start)+ "," + str(bfs_traversal))
         return bfs_traversal
     
-    
+    def dfs(self, start):
+        # Explores the network by going as deep as possible down one path before backtracking.
+        # It starts from a given user and explores each branch of friends fully before moving to the next branch. 
+        
+        if start not in self.list_of_users:
+            print("The user with ID "+str(start.userId)+ "doesnt exist")
+            return
+        else:
+         visited = set()
+         stack = [start]
+         dfs_traversal = []
+
+        while stack:
+            userId = stack.pop()
+            if userId not in visited:
+                visited.add(userId)
+                dfs_traversal.append(userId)
+                for friend in self.list_of_users[userId].friendsList:
+                    if friend not in visited:
+                        stack.append(friend)
+
+        print("BFS Traversal starting from user ID",+ str(start)+ "," + str(dfs_traversal))
+        return dfs_traversal
+
         
     
 
