@@ -1,4 +1,5 @@
 import networkx as nx
+import matplotlib.pyplot as plt
 import sys
 import os
 
@@ -40,8 +41,9 @@ class Users:
         for u in self.list_of_users.values():#iterating through all the values in the list_of_users dictionary
             if u.userId==userId:
                 return u
+                
             else:
-                print("The user with ID "+userId+" is not found")
+                print("The user with ID "+str(userId)+" is not found")
             
     def search_byName(self,fullName):
         #Searching a user by name using linear search algorithm
@@ -160,14 +162,14 @@ class Users:
             if userId not in visited:
                 visited.add(userId)
                 bfs_traversal.append(userId)
-                for friend in self.list_of_users[userId].friendsList:
+                for friend in self.friendsList[userId]:
                     if friend not in visited:
                         queue.append(friend)
         
         print("BFS Traversal starting from user ID",+ str(start)+ "," + str(bfs_traversal))
         return bfs_traversal
     
-    def dfs(self, start):
+    def DFS(self, start):
         # Explores the network by going as deep as possible down one path before backtracking.
         # It starts from a given user and explores each branch of friends fully before moving to the next branch. 
         
@@ -191,7 +193,22 @@ class Users:
         print("BFS Traversal starting from user ID",+ str(start)+ "," + str(dfs_traversal))
         return dfs_traversal
 
-        
+    def Graph_Visualization(self):
+        G= nx.DiGraph()#creating a directed graph G using  NetworkX library.
+
+        for user in self.list_of_users.values():#iterating over each user
+            G.add_node(user.userId, label=user.fullName)#add node ,each node represent the user
+            for friendId, _ in user.friendsList:#For each user, iterate over their friendsList.
+                G.add_edge(user.userId, friendId)#add an edge from the user to each friend.
+
+        pos = nx.spring_layout(G)
+        labels = nx.get_node_attributes(G, 'label')
+
+        #Drawing and configuring the Graph
+        plt.figure(figsize=(20, 20))
+        nx.draw(G, pos, labels=labels, with_labels=True, node_color='Red', node_size=2000, font_size=15, font_color='black', font_weight='bold', edge_color='gray')
+        plt.title('Social Network Media')
+        plt.show()
     
 
     
@@ -202,20 +219,30 @@ class Users:
 
     
 
-# U1=Users()
-# U1.add_new_user(1,"Joe",[])
-# U1.add_new_user(2,"MJ",[])
-# U1.add_new_user(3,"Elie",[])
-# U1.add_new_user(4,"Michelle",[])
+U1=Users()
+U1.add_new_user(1,"Joe",[])
+U1.add_new_user(2,"MJ",[])
+U1.add_new_user(3,"Elie",[])
+U1.add_new_user(4,"Michelle",[])
 
-# print(U1)
-# # print(U1.search_byId(1))
-# J=U1.search_byId(1)
-# #U1.follow_User(J,1)
-# U1.follow_User(J,2)
-# U1.follow_User(J,3)
+print(U1)
+print(U1.search_byId(1))
+print()
+J=U1.search_byId(1)
+print(U1.search_byId(3))
+E=U1.search_byId(3)
 
-# U1.Network_Statistics()
+
+
+#U1.follow_User(J,1)
+U1.follow_User(J,2)
+U1.follow_User(J,3)
+U1.follow_User(J,4)
+U1.follow_User(E,1)
+
+U1.Network_Statistics()
+
+
 
 
 #print(J)
