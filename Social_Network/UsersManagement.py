@@ -163,7 +163,7 @@ J=U1.search_byId(1)
 U1.follow_User(J,2)
 U1.follow_User(J,3)
 
-
+U1.Network_Statistics()
 
 
 #print(J)
