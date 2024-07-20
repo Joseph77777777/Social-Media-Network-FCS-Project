@@ -1,4 +1,4 @@
-import networkx 
+import networkx as nx
 import sys
 import os
 
@@ -9,6 +9,7 @@ from Structure.user import User
 class Users:
     def __init__(self):
         self.list_of_users={}#Creating a dictionary to store users
+        self.Network=nx.DiGraph()#Creating a directed graph to represent the Network
         
     
     def add_new_user(self, userId, fullName, posts=None):
@@ -20,6 +21,7 @@ class Users:
         if userId not in self.list_of_users:
             new_user=User(userId, fullName, posts)
             self.list_of_users[userId]=new_user
+            self.Network.add_node(userId)#Adding a node or vertex(user) to the graph
             
         else:
             print("The user "+fullName+"with ID "+userId+" already exist")
@@ -28,6 +30,7 @@ class Users:
         #Removing a user from the list of users
         if userId  in self.list_of_users:
             del self.list_of_users[userId]
+            self.Network.remove_node(userId)#Removing a node or vertex(user) from the Graph
         else:
             print("The user with ID: "+userId+" doesnt exist")
 
@@ -88,6 +91,7 @@ class Users:
         else:
             user_name=self.list_of_users[userId].fullName
             logged_in_user.add_friend(userId,user_name)
+            
 
     def unfollow_User(self,logged_in_user,userId):
         #removing a friend from user and checking if this friend exist in the list of users
