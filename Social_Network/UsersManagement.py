@@ -209,6 +209,26 @@ class Users:
         nx.draw(G, pos, labels=labels, with_labels=True, node_color='Red', node_size=2000, font_size=15, font_color='black', font_weight='bold', edge_color='gray')
         plt.title('Social Network Media')
         plt.show()
+
+    
+   
+                
+    def displayMenu():
+        return (
+        "The menu is :\n"
+        "1 - Add User\n"
+        "2 - Delete User\n"
+        "3 - Average friends and Network density\n"
+        "4 - Follow friend\n"
+        "5 - Unfollow friend\n"
+        "6 - Add new post\n"
+        "7 - Add new Interest\n"
+        "8 - Show all my friends by name\n"
+        "9 - Search for friend by name\n"
+        "10 - Search for friend by ID\n"
+        "11 - Suggest User based on my interest\n"
+        "12 - Suggest friends based on mutual interests\n"
+        "13 - Print out my Social Network")
     
 
     
