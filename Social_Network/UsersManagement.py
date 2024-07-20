@@ -199,7 +199,7 @@ class Users:
         for user in self.list_of_users.values():#iterating over each user
             G.add_node(user.userId, label=user.fullName)#add node ,each node represent the user
             for friendId, _ in user.friendsList:#For each user, iterate over their friendsList.
-                G.add_edge(user.userId, friendId)#add an edge from the user to each friend.
+                 G.add_edge(user.userId, friendId)#add an edge from the user to each friend.
 
         pos = nx.spring_layout(G)
         labels = nx.get_node_attributes(G, 'label')
@@ -241,7 +241,7 @@ U1.follow_User(J,4)
 U1.follow_User(E,1)
 
 U1.Network_Statistics()
-
+U1.Graph_Visualization()
 
 
 
