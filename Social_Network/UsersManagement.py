@@ -91,6 +91,7 @@ class Users:
         else:
             user_name=self.list_of_users[userId].fullName
             logged_in_user.add_friend(userId,user_name)
+            self.Network.add_edge(logged_in_user.userId,userId) #Adding edge in the graph
             
 
     def unfollow_User(self,logged_in_user,userId):
@@ -102,6 +103,7 @@ class Users:
             print("The user with ID "+str(userId)+" doesnt exist")
         else:
             logged_in_user.remove_friend(userId)
+            self.Network.remove_edge(logged_in_user.userId,userId)#Removing edge from the graph
 
     def update_post_forUser(self,logged_in_user,post):
         if logged_in_user.userId not in self.list_of_users:
