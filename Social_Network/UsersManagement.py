@@ -135,16 +135,21 @@ class Users:
 
 U1=Users()
 U1.add_new_user(1,"Joe",[])
-
-
+U1.add_new_user(2,"MJ",[])
+U1.add_new_user(3,"Elie",[])
+U1.add_new_user(4,"Michelle",[])
 
 print(U1)
 # print(U1.search_byId(1))
 J=U1.search_byId(1)
 #U1.follow_User(J,1)
+U1.follow_User(J,2)
+U1.follow_User(J,3)
+
+U1.Network_Statistics()
 
 
-print(J)
+#print(J)
 
 
 
