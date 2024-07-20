@@ -12,14 +12,14 @@ class Users:
         self.Network=nx.DiGraph()#Creating a directed graph to represent the Network
         
     
-    def add_new_user(self, userId, fullName, posts=None):
+    def add_new_user(self, userId, fullName, posts=None,interests=None):
         #Adding a new user to the list of users.
         #userId: ID for the new user
         #fullName: Name of the new user
         #posts: List of posts made by the user
 
         if userId not in self.list_of_users:
-            new_user=User(userId, fullName, posts)
+            new_user=User(userId, fullName, posts,interests)
             self.list_of_users[userId]=new_user
             self.Network.add_node(userId)#Adding a node or vertex(user) to the graph
             
@@ -140,6 +140,36 @@ class Users:
         else:
             return
         print("The Network density is: "+str(density))
+
+    
+    def BFS(self, start):
+        #Explores the social network level by level. 
+        # It starts from a given user (root node) and visits all their direct friends first, 
+        # then their friends' friends, and so on. 
+        # This is useful for finding the shortest path in terms of the number of edges from the start user 
+        # to any other user in the network.
+        if start not in self.list_of_users:
+            print("The user with ID "+str(start.userId)+ "doesnt exist")
+
+        else:
+         visited = set()
+         queue = [start]
+         bfs_traversal = []
+
+        while queue:
+            userId = queue.pop(0)
+            if userId not in visited:
+                visited.add(userId)
+                bfs_traversal.append(userId)
+                for friend in self.list_of_users[userId].friendsList:
+                    if friend not in visited:
+                        queue.append(friend)
+        
+        print("BFS Traversal starting from user ID",+ str(start)+ "," + str(bfs_traversal))
+        return bfs_traversal
+    
+    
+        
     
 
     
@@ -150,20 +180,20 @@ class Users:
 
     
 
-U1=Users()
-U1.add_new_user(1,"Joe",[])
-U1.add_new_user(2,"MJ",[])
-U1.add_new_user(3,"Elie",[])
-U1.add_new_user(4,"Michelle",[])
+# U1=Users()
+# U1.add_new_user(1,"Joe",[])
+# U1.add_new_user(2,"MJ",[])
+# U1.add_new_user(3,"Elie",[])
+# U1.add_new_user(4,"Michelle",[])
 
-print(U1)
-# print(U1.search_byId(1))
-J=U1.search_byId(1)
-#U1.follow_User(J,1)
-U1.follow_User(J,2)
-U1.follow_User(J,3)
+# print(U1)
+# # print(U1.search_byId(1))
+# J=U1.search_byId(1)
+# #U1.follow_User(J,1)
+# U1.follow_User(J,2)
+# U1.follow_User(J,3)
 
-U1.Network_Statistics()
+# U1.Network_Statistics()
 
 
 #print(J)
