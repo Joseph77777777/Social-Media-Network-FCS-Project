@@ -105,25 +105,52 @@ class Users:
         else:
             logged_in_user.post_Update(post)
 
+    
+    def update_intersets_forUser(self,logged_in_user,interest):
+        if logged_in_user.userId not in self.list_of_users:
+            print("User doesnt exist")
+        else:
+            logged_in_user.interests_Update(interest)
+    
+    def Network_Statistics(self):
+        #Average number of friends per user
+        number_of_users = len(self.list_of_users)
+        total_numbers_friends=0
+        if number_of_users>0 :
+          for user in self.list_of_users.values():
+             total_numbers_friends += len(user.friendsList)
+        else:
+            return
+
+        Average = total_numbers_friends / number_of_users 
+
+        print("The average number of friends per user is : "+str(Average))
+    
+
+          
+
+
 
     
 
 U1=Users()
-U1.add_new_user(1,"oe",[])
-U1.add_new_user(2,"Mj",[])
+U1.add_new_user(1,"Joe",[])
+
+
 
 print(U1)
-print(U1.search_byId(1))
+# print(U1.search_byId(1))
 J=U1.search_byId(1)
-U1.follow_User(J,1)
+#U1.follow_User(J,1)
 
-U1.follow_User(J,3)
-U1.follow_User(J,2)
+
 print(J)
 
-sorted_users = U1.users_sorted_byName()
-for userId, user in sorted_users.items():
-    print("User ID: "+str(userId)+ ", " +"Name:"+user.fullName)
+
+
+# sorted_users = U1.users_sorted_byName()
+# for userId, user in sorted_users.items():
+#     print("User ID: "+str(userId)+ ", " +"Name:"+user.fullName)
 # U1.remove_friend_fromUser(J,3)
 # U1.remove_friend_fromUser(J,2)
 # print(J)
