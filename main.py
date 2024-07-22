@@ -9,7 +9,7 @@ def main():
            user_id=int(input("Enter user ID: "))
            full_name=input("Enter user full name: ")
            U1.add_new_user(user_id,full_name)
-           print(U1)
+           #print(U1)
            print(Users.displayMenu())
            choice=int(input("Please enter your choice: "))
 
@@ -45,7 +45,7 @@ def main():
            adding_post=input("Enter a post: ")
            logged_in_user=U1.search_byId(logged_in_user_id)
            U1.update_post_forUser(logged_in_user,adding_post)
-           print(U1)
+           #print(U1)
            print(Users.displayMenu())
            choice=int(input("Please enter your choice: "))
 
@@ -54,7 +54,7 @@ def main():
            adding_Interest=input("Enter an interest: ")
            logged_in_user=U1.search_byId(logged_in_user_id)
            U1.update_interests_forUser(logged_in_user,adding_Interest)
-           print(U1)
+           #print(U1)
            print(Users.displayMenu())
            choice=int(input("Please enter your choice: "))
 
@@ -65,7 +65,8 @@ def main():
            
         elif(choice==9):
             Name = input("Enter user's name: ")
-            U1.search_byName(Name)
+            U=U1.search_byName(Name)
+            print(U)
            
         elif(choice==10):
            U1.search_byId()
