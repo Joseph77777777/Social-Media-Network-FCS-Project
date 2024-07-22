@@ -9,16 +9,19 @@ def main():
            user_id=int(input("Enter user ID: "))
            full_name=input("Enter user full name: ")
            U1.add_new_user(user_id,full_name)
-           #print(U1)
+           print(U1)
            print(Users.displayMenu())
            choice=int(input("Please enter your choice: "))
+
         elif(choice==2):
            user_id=int(input("Enter user ID to be removed: "))
            U1.remove_user(user_id)
            print(Users.displayMenu())
            choice=int(input("Please enter your choice: "))
+
         elif(choice==3):
            U1.Network_Statistics()
+
         elif(choice==4):
            logged_in_user_id=int(input("Enter your user ID: "))
            friend_Id=int(input("Enter User ID to follow: "))
@@ -27,10 +30,23 @@ def main():
            #print(U1)
            print(Users.displayMenu())
            choice=int(input("Please enter your choice: "))
+
         elif(choice==5):
-           U1.unfollow_User()
+           logged_in_user_id=int(input("Enter your user ID: "))
+           friend_Id=int(input("Enter User ID to Unfollow: "))
+           logged_in_user = U1.search_byId(logged_in_user_id)
+           U1.unfollow_User(logged_in_user, friend_Id)
+           #print(U1)
+           print(Users.displayMenu())
+           choice=int(input("Please enter your choice: "))
+           
         elif(choice==6):
-           U1.update_post_forUser()
+           logged_in_user_id=int(input("Enter your user ID: "))
+           adding_post=input("Enter a post: ")
+           logged_in_user=U1.search_byId(logged_in_user_id)
+           U1.update_post_forUser(logged_in_user,adding_post)
+           print(U1)
+
         elif(choice==7):
            U1.update_intersets_forUser()
         elif(choice==8):
@@ -44,7 +60,9 @@ def main():
         elif(choice==12):
            U1.BFS()
         elif(choice==13):
-           U1.Graph_Visualization()   
+           U1.Graph_Visualization() 
+           print(Users.displayMenu())
+           choice=int(input("Please enter your choice: "))  
         else:
             print("This is invalid input.Try Again!")
             print(Users.displayMenu())

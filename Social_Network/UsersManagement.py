@@ -58,7 +58,7 @@ class Users:
         #Displaying the list of users
         users_list=""
         for userId,name in self.list_of_users.items():
-            users_list+="User ID: "+str(userId)+",Name: "+name.fullName +"\n"
+            users_list+="User ID: "+str(userId)+",Name: "+name.fullName +",Posts: "+str(name.posts) +"\n"
         return users_list
     
     def selectionSort(self,lst):
