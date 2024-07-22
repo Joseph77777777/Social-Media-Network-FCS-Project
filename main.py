@@ -46,13 +46,27 @@ def main():
            logged_in_user=U1.search_byId(logged_in_user_id)
            U1.update_post_forUser(logged_in_user,adding_post)
            print(U1)
+           print(Users.displayMenu())
+           choice=int(input("Please enter your choice: "))
 
         elif(choice==7):
-           U1.update_intersets_forUser()
+           logged_in_user_id=int(input("Enter your user ID: "))
+           adding_Interest=input("Enter an interest: ")
+           logged_in_user=U1.search_byId(logged_in_user_id)
+           U1.update_interests_forUser(logged_in_user,adding_Interest)
+           print(U1)
+           print(Users.displayMenu())
+           choice=int(input("Please enter your choice: "))
+
         elif(choice==8):
-           U1.users_sorted_byName()
+           sorted_users = U1.users_sorted_byName()
+           for userId, name in sorted_users.items():
+            print("User ID: "+str(userId)+ ", " +"Name:"+name.fullName)
+           
         elif(choice==9):
-           U1.search_byName()
+            Name = input("Enter user's name: ")
+            U1.search_byName(Name)
+           
         elif(choice==10):
            U1.search_byId()
         elif(choice==11):

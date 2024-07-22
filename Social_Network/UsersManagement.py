@@ -50,15 +50,16 @@ class Users:
 
         for u in self.list_of_users.values():#iterating through all the values in the list_of_users dictionary
             if u.fullName==fullName:
+                print("The user with name "+fullName+" is found")
                 return u
-            else:
-                print("The user with name "+fullName+" is not found")
+        
+        print("The user with name "+fullName+" is not found")
 
     def __str__(self):
         #Displaying the list of users
         users_list=""
         for userId,name in self.list_of_users.items():
-            users_list+="User ID: "+str(userId)+",Name: "+name.fullName +",Posts: "+str(name.posts) +"\n"
+            users_list+="User ID: "+str(userId)+",Name: "+name.fullName +",Posts: "+str(name.posts) + ",Interests: "+str(name.interests)+"\n"
         return users_list
     
     def selectionSort(self,lst):
@@ -114,7 +115,7 @@ class Users:
             logged_in_user.post_Update(post)
 
     
-    def update_intersets_forUser(self,logged_in_user,interest):
+    def update_interests_forUser(self,logged_in_user,interest):
         if logged_in_user.userId not in self.list_of_users:
             print("User doesnt exist")
         else:
