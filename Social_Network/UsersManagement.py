@@ -33,7 +33,7 @@ class Users:
             del self.list_of_users[userId]
             self.Network.remove_node(userId)#Removing a node or vertex(user) from the Graph
         else:
-            print("The user with ID: "+userId+" doesnt exist")
+            print("The user with ID "+str(userId)+" doesnt exist")
 
     def search_byId(self,userId):
         #Searching a user by ID using linear search algorithm

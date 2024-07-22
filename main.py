@@ -13,11 +13,20 @@ def main():
            print(Users.displayMenu())
            choice=int(input("Please enter your choice: "))
         elif(choice==2):
-           U1.remove_user()
+           user_id=int(input("Enter user ID to be removed: "))
+           U1.remove_user(user_id)
+           print(Users.displayMenu())
+           choice=int(input("Please enter your choice: "))
         elif(choice==3):
            U1.Network_Statistics()
         elif(choice==4):
-           U1.follow_User()
+           logged_in_user_id=int(input("Enter your user ID: "))
+           friend_Id=int(input("Enter User ID to follow: "))
+           logged_in_user = U1.search_byId(logged_in_user_id)
+           U1.follow_User(logged_in_user, friend_Id)
+           #print(U1)
+           print(Users.displayMenu())
+           choice=int(input("Please enter your choice: "))
         elif(choice==5):
            U1.unfollow_User()
         elif(choice==6):
