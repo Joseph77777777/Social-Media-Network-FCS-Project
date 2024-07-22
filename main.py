@@ -62,18 +62,27 @@ def main():
            sorted_users = U1.users_sorted_byName()
            for userId, name in sorted_users.items():
             print("User ID: "+str(userId)+ ", " +"Name:"+name.fullName)
-           
+           print(Users.displayMenu())
+           choice=int(input("Please enter your choice: "))
+
         elif(choice==9):
             Name = input("Enter user's name: ")
             U=U1.search_byName(Name)
             print(U)
+            print(Users.displayMenu())
+            choice=int(input("Please enter your choice: "))
            
         elif(choice==10):
-           U1.search_byId()
-        elif(choice==11):
-           U1.DFS()
-        elif(choice==12):
-           U1.BFS()
+           ID=int(input("Enter user's ID: "))
+           U=U1.search_byId(ID)
+           print(U)
+           print(Users.displayMenu())
+           choice=int(input("Please enter your choice: "))
+
+        #elif(choice==11):
+           
+        #elif(choice==12):
+           
         elif(choice==13):
            U1.Graph_Visualization() 
            print(Users.displayMenu())
@@ -83,5 +92,5 @@ def main():
             print(Users.displayMenu())
             choice=int(input("Please enter your choice: "))
     
-    print("Thank you for using our system")
+    print("Thank you for using our Social Network System")
 main()
