@@ -210,9 +210,7 @@ class Users:
         plt.title('Social Network Media')
         plt.show()
 
-    
-   
-                
+         
     def displayMenu():
         return (
         "The menu is :\n"
@@ -224,7 +222,7 @@ class Users:
         "6 - Add new post\n"
         "7 - Add new Interest\n"
         "8 - Show all my friends by name\n"
-        "9 - Search for friend by name\n"
+        "9- Search for friend by name\n"
         "10 - Search for friend by ID\n"
         "11 - Suggest User based on my interest\n"
         "12 - Suggest friends based on mutual interests\n"
@@ -239,29 +237,29 @@ class Users:
 
     
 
-U1=Users()
-U1.add_new_user(1,"Joe",[])
-U1.add_new_user(2,"MJ",[])
-U1.add_new_user(3,"Elie",[])
-U1.add_new_user(4,"Michelle",[])
+# U1=Users()
+# U1.add_new_user(1,"Joe",[])
+# U1.add_new_user(2,"MJ",[])
+# U1.add_new_user(3,"Elie",[])
+# U1.add_new_user(4,"Michelle",[])
 
-print(U1)
-print(U1.search_byId(1))
-print()
-J=U1.search_byId(1)
-print(U1.search_byId(3))
-E=U1.search_byId(3)
+# print(U1)
+# print(U1.search_byId(1))
+# print()
+# J=U1.search_byId(1)
+# print(U1.search_byId(3))
+# E=U1.search_byId(3)
+# # U1.displayMenu()
 
 
+# #U1.follow_User(J,1)
+# U1.follow_User(J,2)
+# U1.follow_User(J,3)
+# U1.follow_User(J,4)
+# U1.follow_User(E,1)
 
-#U1.follow_User(J,1)
-U1.follow_User(J,2)
-U1.follow_User(J,3)
-U1.follow_User(J,4)
-U1.follow_User(E,1)
-
-U1.Network_Statistics()
-U1.Graph_Visualization()
+# U1.Network_Statistics()
+# U1.Graph_Visualization()
 
 
 
