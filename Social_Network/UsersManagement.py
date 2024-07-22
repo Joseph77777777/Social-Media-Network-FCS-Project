@@ -25,7 +25,7 @@ class Users:
             self.Network.add_node(userId)#Adding a node or vertex(user) to the graph
             
         else:
-            print("The user "+fullName+"with ID "+userId+" already exist")
+            print("The user "+fullName+" with ID "+str(userId)+" already exist")
     
     def remove_user(self,userId):
         #Removing a user from the list of users
@@ -58,7 +58,7 @@ class Users:
         #Displaying the list of users
         users_list=""
         for userId,name in self.list_of_users.items():
-            users_list+=str(userId)+", "+name.fullName +"\n"
+            users_list+="User ID: "+str(userId)+",Name: "+name.fullName +"\n"
         return users_list
     
     def selectionSort(self,lst):

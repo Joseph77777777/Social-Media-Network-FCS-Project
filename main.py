@@ -1,12 +1,17 @@
 from Social_Network.UsersManagement import Users
-#U1=Users()
+
 def main():
     U1=Users()
     print(Users.displayMenu())
     choice=int(input("Please enter your choice: "))
     while(choice!=14):
         if(choice==1):
-           U1.add_new_user()
+           user_id=int(input("Enter user ID: "))
+           full_name=input("Enter user full name: ")
+           U1.add_new_user(user_id,full_name)
+           #print(U1)
+           print(Users.displayMenu())
+           choice=int(input("Please enter your choice: "))
         elif(choice==2):
            U1.remove_user()
         elif(choice==3):
