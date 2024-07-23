@@ -11,9 +11,10 @@ class User:
         self.friendsList = []
         self.posts = []
         self.interests=[]
+        
     
 
-    def add_friend(self,friend_Id,friend_Name):
+    def add_friend(self,friend_Id,friend_Name,weight):
         # adding friend to the friend list
         # parameter friend_Id: ID for the new friend
         # parameter friend_Name: Name of the new friend
@@ -25,7 +26,7 @@ class User:
                 break
         
         if  friend_exist==False:#if not exist it will be added to the list
-            self.friendsList.append((friend_Id,friend_Name))
+            self.friendsList.append((friend_Id,friend_Name,weight))
             
         else:
             print("The friend with ID: "+str(friend_Id)+" is already added")

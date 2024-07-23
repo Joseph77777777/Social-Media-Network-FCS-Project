@@ -11,6 +11,8 @@ class Users:
     def __init__(self):
         self.list_of_users={}#Creating a dictionary to store users
         self.Network=nx.DiGraph()#Creating a directed graph to represent the Network
+        
+    
 
     def check_user_exist(self,userId, fullName):
         if userId not in self.list_of_users:
@@ -91,7 +93,7 @@ class Users:
             dict_sorted[user.userId] = user
         return dict_sorted
 
-    def follow_User(self,logged_in_user,userId):
+    def follow_User(self,logged_in_user,userId,weight):
         #Adding a friend to user and checking if this friend exist in the list of users
         #userId: ID for the new user I want to become friend 
         #logged_in_user : The main user
@@ -102,7 +104,7 @@ class Users:
             print("The user with ID "+str(userId)+" doesnt exist")
         else:
             user_name=self.list_of_users[userId].fullName
-            logged_in_user.add_friend(userId,user_name)
+            logged_in_user.add_friend(userId,user_name,weight)
             self.Network.add_edge(logged_in_user.userId,userId) #Adding edge in the graph
             
 
@@ -203,52 +205,53 @@ class Users:
 
         return dfs_traversal
     
-    # def shortest_path(self,start,target):
-    #     if start not in self.list_of_users and target not in self.list_of_users:
-    #         print("The start and target ID doesnt exist")
+    def shortest_path(self,start,target):
+        if start not in self.list_of_users and target not in self.list_of_users:
+            print("The start and target ID doesnt exist")
         
-    #     distance = {}
-    #     previous_nodes = {}
-    #     for user in self.list_of_users:
-    #         distance[user]= float('inf')
-    #         previous_nodes[user] = None
-    #     distance[start] = 0
+        distance = {}
+        previous_nodes = {}
+        for user in self.list_of_users:
+            distance[user]= float('inf')
+            previous_nodes[user] = None
+        distance[start] = 0
 
-    #     # List to act as a priority queue
-    #     priority_queue = [(0, start)]
-    #     visited = set()
+        # List to act as a priority queue
+        priority_queue = [(0, start)]
+        visited = set()
 
-    #     while priority_queue:
-    #         # Find user with the smallest distance
-    #         priority_queue.sort()
-    #         current_distance, current_user_id = priority_queue.pop(0)
+        while priority_queue:
+            # Find user with the smallest distance
+            priority_queue.sort()
+            current_distance, current_user_id = priority_queue.pop(0)
 
-    #         if current_user_id in visited:
-    #             continue
+            if current_user_id in visited:
+                continue
 
-    #         visited.add(current_user_id)
+            visited.add(current_user_id)
 
-    #         if current_user_id == target:
-    #             # Construct the path
-    #             path = []
-    #             while current_user_id is not None:
-    #                 path.append(current_user_id)
-    #                 current_user_id = previous_nodes[current_user_id]
-    #             path.reverse()
-    #             print("Shortest path:", path)
-    #             return path
+            if current_user_id == target:
+                # Construct the path
+                path = []
+                while current_user_id is not None:
+                    path.append(current_user_id)
+                    current_user_id = previous_nodes[current_user_id]
+                path.reverse()
+                print("Shortest path:", path)
+                return path
 
-    #         current_user = self.list_of_users[current_user_id]
+            current_user = self.list_of_users[current_user_id]
+            
+            for friend_id,f_name, weight in current_user.friendsList:
+                if friend_id not in visited:
+                    
+                    new_distance = current_distance + weight
+                    if new_distance < distance[friend_id]:
+                        distance[friend_id] = new_distance
+                        previous_nodes[friend_id] = current_user_id
+                        priority_queue.append((new_distance, friend_id))
 
-    #         for friend_id, weight in current_user.friendsList:
-    #             if friend_id not in visited:
-    #                 new_distance = current_distance + weight
-    #                 if new_distance < distance[friend_id]:
-    #                     distance[friend_id] = new_distance
-    #                     previous_nodes[friend_id] = current_user_id
-    #                     priority_queue.append((new_distance, friend_id))
-
-    #     print("There is no path between the users")
+        print("There is no path between the users")
  
     def Graph_Visualization(self):
         G= nx.DiGraph()#creating a directed graph G using  NetworkX library.
