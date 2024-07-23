@@ -79,7 +79,10 @@ def main():
            print(Users.displayMenu())
            choice=int(input("Please enter your choice: "))
 
-        #elif(choice==11):
+        elif(choice==11):
+           Start_userId=int(input("Enter a start user ID: "))
+           bfs=U1.BFS(Start_userId)
+           print("The BFS traversal: "+ str(bfs))
            
         #elif(choice==12):
            

@@ -147,27 +147,27 @@ class Users:
     
     def BFS(self, start):
         #Explores the social network level by level. 
-        # It starts from a given user (root node) and visits all their direct friends first, 
+        # It starts from a given user (root node) and visits all their direct follower friends first, 
         # then their friends' friends, and so on. 
         
         if start not in self.list_of_users:
-            print("The user with ID "+str(start.userId)+ "doesnt exist")
+            print("The user with ID "+str(start)+ "doesnt exist")
 
-        else:
-         visited = set()
-         queue = [start]
-         bfs_traversal = []
+        
+        visited = set()
+        queue = [start]
+        bfs_traversal = []
 
         while queue:
             userId = queue.pop(0)
             if userId not in visited:
                 visited.add(userId)
                 bfs_traversal.append(userId)
-                for friend in self.friendsList[userId]:
+                user=self.list_of_users[userId]
+                for friend in user.friendsList:
                     if friend not in visited:
                         queue.append(friend)
         
-        print("BFS Traversal starting from user ID",+ str(start)+ "," + str(bfs_traversal))
         return bfs_traversal
     
     def DFS(self, start):
@@ -225,8 +225,8 @@ class Users:
         "8 - Show all my friends by name\n"
         "9- Search for friend by name\n"
         "10 - Search for friend by ID\n"
-        "11 - Suggest User based on my interest\n"
-        "12 - Suggest friends based on mutual interests\n"
+        "11 - BFS Traversal\n"
+        "12 - DFS Traversal\n"
         "13 - Print out my Social Network")
     
 
