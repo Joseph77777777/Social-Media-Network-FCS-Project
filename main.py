@@ -54,7 +54,7 @@ def main():
            adding_post=input('Enter a post: ')
            #logged_in_user=U1.search_byId(logged_in_user_id)
            U1.update_post_forUser(logged_in_user,adding_post)
-           print(logged_in_user.posts)
+           print(f'Your posts are:{logged_in_user.posts}')
            print(Users.displayMenu(logged_in_user!=None))
            choice=int(input('Please enter your choice: '))
 
@@ -63,7 +63,7 @@ def main():
            adding_Interest=input('Enter an interest: ')
            #logged_in_user=U1.search_byId(logged_in_user_id)
            U1.update_interests_forUser(logged_in_user,adding_Interest)
-           print(logged_in_user.interests)
+           print(f'Your posts are:{logged_in_user.interests}')
            #print(U1)
            print(Users.displayMenu(logged_in_user!=None))
            choice=int(input('Please enter your choice: '))
