@@ -11,7 +11,16 @@ class Users:
     def __init__(self):
         self.list_of_users={}#Creating a dictionary to store users
         self.Network=nx.DiGraph()#Creating a directed graph to represent the Network
-        
+
+    def check_user_exist(self,userId, fullName):
+        if userId not in self.list_of_users:
+            print("User doesnt exist")
+        elif(self.search_byId(userId).fullName==fullName):
+            return self.search_byId(userId)
+        else:
+         print("User doesnt exist")
+            
+
     
     def add_new_user(self, userId, fullName, posts=None,interests=None):
         #Adding a new user to the list of users.
@@ -49,7 +58,7 @@ class Users:
         #Searching a user by name using linear search algorithm
 
         for u in self.list_of_users.values():#iterating through all the values in the list_of_users dictionary
-            if u.fullName==fullName:
+            if u.fullName.lower()==fullName.lower():
                 print("The user with name "+fullName+" is found")
                 return u
             
@@ -193,7 +202,54 @@ class Users:
                         stack.append(friend)
 
         return dfs_traversal
+    
+    # def shortest_path(self,start,target):
+    #     if start not in self.list_of_users and target not in self.list_of_users:
+    #         print("The start and target ID doesnt exist")
+        
+    #     distance = {}
+    #     previous_nodes = {}
+    #     for user in self.list_of_users:
+    #         distance[user]= float('inf')
+    #         previous_nodes[user] = None
+    #     distance[start] = 0
 
+    #     # List to act as a priority queue
+    #     priority_queue = [(0, start)]
+    #     visited = set()
+
+    #     while priority_queue:
+    #         # Find user with the smallest distance
+    #         priority_queue.sort()
+    #         current_distance, current_user_id = priority_queue.pop(0)
+
+    #         if current_user_id in visited:
+    #             continue
+
+    #         visited.add(current_user_id)
+
+    #         if current_user_id == target:
+    #             # Construct the path
+    #             path = []
+    #             while current_user_id is not None:
+    #                 path.append(current_user_id)
+    #                 current_user_id = previous_nodes[current_user_id]
+    #             path.reverse()
+    #             print("Shortest path:", path)
+    #             return path
+
+    #         current_user = self.list_of_users[current_user_id]
+
+    #         for friend_id, weight in current_user.friendsList:
+    #             if friend_id not in visited:
+    #                 new_distance = current_distance + weight
+    #                 if new_distance < distance[friend_id]:
+    #                     distance[friend_id] = new_distance
+    #                     previous_nodes[friend_id] = current_user_id
+    #                     priority_queue.append((new_distance, friend_id))
+
+    #     print("There is no path between the users")
+ 
     def Graph_Visualization(self):
         G= nx.DiGraph()#creating a directed graph G using  NetworkX library.
 
@@ -212,22 +268,25 @@ class Users:
         plt.show()
 
          
-    def displayMenu():
-        return (
-        "The menu is :\n"
+    def displayMenu(isLoggedIn):
+        ifNotLoggedIn=("The menu is :\n"
+        "0 - Log in\n"
         "1 - Add User\n"
-        "2 - Delete User\n"
-        "3 - Average friends and Network density\n"
+        "2 - Delete User\n")
+        ifLoggedIn=("3 - Average friends and Network density\n"
         "4 - Follow friend\n"
         "5 - Unfollow friend\n"
         "6 - Add new post\n"
         "7 - Add new Interest\n"
-        "8 - Show all my friends by name\n"
+        "8 - Show all users by name\n"
         "9- Search for friend by name\n"
         "10 - Search for friend by ID\n"
         "11 - BFS Traversal\n"
         "12 - DFS Traversal\n"
-        "13 - Print out my Social Network")
+        "13 - Find shortest path between Two users\n"
+        "14 - Print out my Social Network")
+
+        return (ifNotLoggedIn+ifLoggedIn) if isLoggedIn else ifNotLoggedIn
     
 
     
