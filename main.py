@@ -83,9 +83,16 @@ def main():
            Start_userId=int(input("Enter a start user ID: "))
            bfs=U1.BFS(Start_userId)
            print("The BFS traversal: "+ str(bfs))
+           print(Users.displayMenu())
+           choice=int(input("Please enter your choice: "))
            
-        #elif(choice==12):
-           
+        elif(choice==12):
+           Start_userId=int(input("Enter a start user ID: "))
+           dfs=U1.DFS(Start_userId)
+           print("The DFS traversal: "+ str(dfs))
+           print(Users.displayMenu())
+           choice=int(input("Please enter your choice: "))
+
         elif(choice==13):
            U1.Graph_Visualization() 
            print(Users.displayMenu())

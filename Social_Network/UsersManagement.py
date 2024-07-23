@@ -164,7 +164,7 @@ class Users:
                 visited.add(userId)
                 bfs_traversal.append(userId)
                 user=self.list_of_users[userId]
-                for friend in user.friendsList:
+                for friend,_ in user.friendsList:
                     if friend not in visited:
                         queue.append(friend)
         
@@ -175,23 +175,23 @@ class Users:
         # It starts from a given user and explores each branch of friends fully before moving to the next branch. 
         
         if start not in self.list_of_users:
-            print("The user with ID "+str(start.userId)+ "doesnt exist")
-            return
-        else:
-         visited = set()
-         stack = [start]
-         dfs_traversal = []
+            print("The user with ID "+str(start)+ "doesnt exist")
+            
+        
+        visited = set()
+        stack = [start]
+        dfs_traversal = []
 
         while stack:
             userId = stack.pop()
             if userId not in visited:
                 visited.add(userId)
                 dfs_traversal.append(userId)
-                for friend in self.list_of_users[userId].friendsList:
+                user=self.list_of_users[userId]
+                for friend, _ in user.friendsList:
                     if friend not in visited:
                         stack.append(friend)
 
-        print("BFS Traversal starting from user ID",+ str(start)+ "," + str(dfs_traversal))
         return dfs_traversal
 
     def Graph_Visualization(self):
