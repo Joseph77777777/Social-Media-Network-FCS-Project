@@ -11,6 +11,18 @@ class Users:
     def __init__(self):
         self.list_of_users={}#Creating a dictionary to store users
         self.Network=nx.DiGraph()#Creating a directed graph to represent the Network
+        # new_user=User(1,"Joseph", [],["music","foot","a","b","c"])
+        # self.list_of_users[1]=new_user
+        # self.Network.add_node(1)#Adding a node or vertex(user) to the graph
+        # new_user=User(2,"Michelle", [],["music","a"])
+        # self.list_of_users[2]=new_user
+        # self.Network.add_node(2)#Adding a node or vertex(user) to the graph
+        # new_user=User(3,"MJ", [],["sleeping","b"])
+        # self.list_of_users[3]=new_user
+        # self.Network.add_node(3)#Adding a node or vertex(user) to the graph
+        # new_user=User(4,"Mich", [],["food","c"])
+        # self.list_of_users[4]=new_user
+        # self.Network.add_node(4)#Adding a node or vertex(user) to the graph
         
     
 
@@ -92,6 +104,53 @@ class Users:
         for user in sorted_users:
             dict_sorted[user.userId] = user
         return dict_sorted
+    
+    
+        
+    def suggestion(self, logged_in_user):
+        
+        
+        if not logged_in_user.interests:
+            print("Logged in user has no interests.")
+            return []
+        
+        interests_set = set(logged_in_user.interests)
+        priority_queue = []
+        out = []
+
+        for user_id in self.list_of_users:
+            
+            
+            if user_id not in logged_in_user.friendsList and user_id !=logged_in_user.userId:
+                user_obj = self.search_byId(user_id)
+                
+                
+                if user_obj and user_obj.interests:
+                    user_interests_set = set(user_obj.interests)
+                    common_interest = interests_set & user_interests_set
+                    
+                    if common_interest:
+                        priority_queue.append((len(common_interest), user_obj))
+                        
+                else:
+                    print(f'User {user_id} has no interests or not found')
+            # else:
+            #     print(f'User {user_id} is already a friend')
+        
+        def custom_key(item):
+            return item[0]
+
+        priority_queue = sorted(priority_queue, key=custom_key, reverse=True)
+       
+
+        max_val = min(4, len(priority_queue))
+        
+        
+        for i in range(max_val):
+            out.append(priority_queue.pop(0))
+        
+        return out
+
 
     def follow_User(self,logged_in_user,userId,weight):
         #Adding a friend to user and checking if this friend exist in the list of users
@@ -242,7 +301,7 @@ class Users:
 
             current_user = self.list_of_users[current_user_id]
             
-            for friend_id,f_name, weight in current_user.friendsList:
+            for friend_id,_, weight in current_user.friendsList:
                 if friend_id not in visited:
                     
                     new_distance = current_distance + weight
@@ -287,7 +346,8 @@ class Users:
         "11 - BFS Traversal\n"
         "12 - DFS Traversal\n"
         "13 - Find shortest path between Two users\n"
-        "14 - Print out my Social Network")
+        "14 - Suggest top 4 new friends based on common interests\n"
+        "15 - Print out my Social Network")
 
         return (ifNotLoggedIn+ifLoggedIn) if isLoggedIn else ifNotLoggedIn
     

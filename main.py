@@ -100,12 +100,18 @@ def main():
             Start_userId=int(input('Enter a start user ID: '))
             Target_userId=int(input('Enter a target user ID: '))
             Short_path=U1.shortest_path(Start_userId,Target_userId)
-            print('The shortest path is : {Short_path}')
+            print(f'The shortest path is : {Short_path}')
             print(Users.displayMenu(logged_in_user!=None))
             choice=int(input('Please enter your choice: '))
             
-
          elif(choice==14):
+            ret=U1.suggestion(logged_in_user)
+            for score,userO in ret:
+               print(f'Priority Queue:{score} common interests with: {userO.fullName}\n')
+            print(Users.displayMenu(logged_in_user!=None))
+            choice=int(input('Please enter your choice: '))
+
+         elif(choice==15):
             U1.Graph_Visualization() 
             print(Users.displayMenu(logged_in_user!=None))
             choice=int(input('Please enter your choice: '))  
@@ -115,7 +121,8 @@ def main():
                choice=int(input('Please enter your choice: '))
       
       print('Thank you for using our Social Network System')
-    except:
+    except Exception as e:
+      print(e)
       print('OOPs This is invalid input.Try Again!')
       main()
 
