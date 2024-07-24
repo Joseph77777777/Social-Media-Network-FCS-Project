@@ -105,7 +105,7 @@ def main():
             choice=int(input('Please enter your choice: '))
             
          elif(choice==14):
-            ret=U1.suggestion(logged_in_user)
+            ret=U1.new_friend_suggestion(logged_in_user)
             for score,userO in ret:
                print(f'Priority Queue:{score} common interests with: {userO.fullName}\n')
             print(Users.displayMenu(logged_in_user!=None))
@@ -123,7 +123,7 @@ def main():
       print('Thank you for using our Social Network System')
     except Exception as e:
       print(e)
-      print('OOPs This is invalid input.Try Again!')
+      print('This is invalid input.Try Again!')
       main()
 
        
