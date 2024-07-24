@@ -11,20 +11,20 @@ Project Characteristics:
 
 A-User Management:
 
-1-Add a new user.
-2-Remove an existing user.
-3-Log in as an existing user.
+1-Add a new user.\
+2-Remove an existing user.\
+3-Log in as an existing user.\
 
 B-Friends Management:
 
-1-Follow a friend.
-2-Unfollow a friend.
-3-Display the list of friends.
+1-Follow a friend.\
+2-Unfollow a friend.\
+3-Display the list of friends.\
 
 C-Content Management:
 
-1-Post updates
-2-Update interests
+1-Post updates.\
+2-Update interests.\
 
 D-Network Operations:
 
@@ -92,4 +92,4 @@ Choose option 15 to visualize the social network graph.
 5-Exit:
 
 Choose option 16 to exit the application.
-Code Structure
+
