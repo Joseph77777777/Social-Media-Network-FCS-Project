@@ -513,56 +513,8 @@ class Users:
 
     
 
-          
 
 
-
-    
-
-# U1=Users()
-# U1.add_new_user(1,"Joe",[])
-# U1.add_new_user(2,"MJ",[])
-# U1.add_new_user(3,"Elie",[])
-# U1.add_new_user(4,"Michelle",[])
-
-# print(U1)
-# print(U1.search_byId(1))
-# print()
-# J=U1.search_byId(1)
-# print(U1.search_byId(3))
-# E=U1.search_byId(3)
-# # U1.displayMenu()
-
-
-# #U1.follow_User(J,1)
-# U1.follow_User(J,2)
-# U1.follow_User(J,3)
-# U1.follow_User(J,4)
-# U1.follow_User(E,1)
-
-# U1.Network_Statistics()
-# U1.Graph_Visualization()
-
-
-
-#print(J)
-
-
-
-# sorted_users = U1.users_sorted_byName()
-# for userId, user in sorted_users.items():
-#     print("User ID: "+str(userId)+ ", " +"Name:"+user.fullName)
-# U1.remove_friend_fromUser(J,3)
-# U1.remove_friend_fromUser(J,2)
-# print(J)
-# U1.update_post_forUser(J,"my first post")
-# print(J)
-
-
-# # J.add_friend(2,"MjA")
-# # print(J)
-# # J.add_friend(3,"Michelle")
-# # print(J)
 
   
 
