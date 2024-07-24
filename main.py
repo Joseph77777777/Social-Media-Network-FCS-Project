@@ -38,7 +38,8 @@ def main():
          # Display network statistics
          elif(choice==3):
             U1.Network_Statistics()
-
+            print(Users.displayMenu(logged_in_user!=None))
+            choice=int(input('Please enter your choice: '))
          #Follow a user
          elif(choice==4):
             friend_Id=int(input('Enter User ID to follow: '))
@@ -127,7 +128,7 @@ def main():
                print(f'Priority Queue:{score} common interests with: {userO.fullName}\n')
             print(Users.displayMenu(logged_in_user!=None))
             choice=int(input('Please enter your choice: '))
-            
+
          #Print out my Social Network
          elif(choice==15):
             U1.Graph_Visualization() 

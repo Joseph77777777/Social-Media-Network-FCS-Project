@@ -468,7 +468,7 @@ class Users:
             #add node ,each node represent the user
             G.add_node(user.userId, label=user.fullName)
             #For each user, iterate over their friendsList.
-            for friendId, _ in user.friendsList:
+            for friendId, _, _ in user.friendsList:
                  #add an edge from the user to each friend.
                  G.add_edge(user.userId, friendId)
 
