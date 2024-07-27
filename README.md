@@ -2,10 +2,7 @@ SOCIAL NETWORK ANALYSIS PROJECT
 
 Overview:
 
-This project will implement  a social network system.
-The project will involve creating various classes and methods to manage users and relationships, connect with friends, make posts, and explore the network through various operations like searching for users, suggesting new friends, and visualizing the social network graph using the NetworkX library.
-The system supports functionalities such as adding and removing users, following and unfollowing friends, posting updates, updating interests,and performing network analysis and recommendations..
-
+This project implements a social network system similar to popular platforms like Instagram and Twitter, where users can follow and unfollow each other. The system allows users to manage their connections, create posts, update their interests, and explore their social network through various functionalities.
 
 Project Characteristics:
 
@@ -28,20 +25,27 @@ C-Content Management:
 
 D-Network Operations:
 
-1-Display network statistics (average number of friends, network density)\
-2-Search for users by name or ID\
-3-Sort users by name\
-4-BFS and DFS traversals\
-5-Find the shortest path between two users\
+1-Display network statistics (average number of friends per user, network density)\
+2-Search for users by name using linear search algorithm or ID using binary search\
+3-Sort users by name using selection sort algorithm\
+4-BFS and DFS traversals to explore the social network structure\
+5-Find the shortest path between two users using Dijkstra’s algorithm\
 6-Suggest new friends based on common interests\
-7-Visualize the social network graph
+7-Visualize the social network graph using NetworkX and matplotlib
 
 
 Application:
 
 Menu:
 
-The menu options are as follows:
+The menu options before logging in are as follows:
+
+0: Log in as an existing user\
+1: Add a new user\
+2: Remove an existing user\
+16: Exit
+
+The menu options for the logged in users are as follows:
 
 0: Log in as an existing user\
 1: Add a new user\
@@ -52,8 +56,8 @@ The menu options are as follows:
 6: Add a new post\
 7: Add a new interest\
 8: Show all users sorted by name\
-9: Search for a friend by name\
-10: Search for a friend by ID\
+9: Search for a user by name\
+10: Search for a user by ID\
 11: Perform BFS traversal\
 12: Perform DFS traversal\
 13: Find the shortest path between two users\
@@ -69,6 +73,8 @@ Here is an example of how to use the application:
 Choose option 0 to log in if you have an existing user.\
 Choose option 1 to add a new user by providing a user ID and full name.
 
+After logging in:
+
 2-Manage Friends:
 
 Choose option 4 to follow a friend by providing their user ID and the weight/strength of the relationship.\
@@ -83,8 +89,8 @@ Choose option 7 to add a new interest.
 
 Choose option 3 to display network statistics.\
 Choose option 8 to show all users sorted by name.\
-Choose option 9 to search for a friend by name.\
-Choose option 10 to search for a friend by ID.\
+Choose option 9 to search for a user by name.\
+Choose option 10 to search for a user by ID.\
 Choose option 11 or 12 to perform BFS or DFS traversal.\
 Choose option 13 to find the shortest path between two users.\
 Choose option 14 to suggest new friends based on common interests.\

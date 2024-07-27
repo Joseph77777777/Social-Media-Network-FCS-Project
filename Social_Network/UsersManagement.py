@@ -2,6 +2,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import sys
 import os
+import math
 
 # Add the top-level directory to sys.path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -33,7 +34,7 @@ class Users:
         """
         if userId not in self.list_of_users:#Checking if the userId exists in the list of users 
             print("User doesnt exist")
-        elif(self.search_byId(userId).fullName==fullName):# Check if the fullName matches.
+        elif(self.search_byId(userId).fullName.lower()==fullName.lower()):# Check if the fullName matches.
             return self.search_byId(userId)
         else:
          print("User doesnt exist")
@@ -80,24 +81,33 @@ class Users:
 
     def search_byId(self,userId):
         """
-        Search for a user by their ID using a linear search algorithm.
+        Search for a user by their ID using a binary search algorithm.
 
         Parameters: 
                   userId : The ID of the user to search for.
         """
-        
-        #iterating through all the values in the list of users
-        for u in self.list_of_users.values():
-            # Check if the userId matches.
-            if u.userId==userId:
-                print("The user with ID "+str(userId)+" is found")
-                return u
+        #Starting indices
+        low=0
+        high=len(self.list_of_users)
+        while (low<=high):
+            #Caluculating middle value 
+            mid=(low+high)/2
+            mid=(math.ceil(mid))
+            if(userId==self.list_of_users[mid].userId):
+                #Returning the userId if founded
+                return self.list_of_users[mid]
+            elif(userId>self.list_of_users[mid].userId):
+                low=mid+1
+            else:
+                high=mid-1
         #print a message if the userId is not found
         print("The user with ID "+str(userId)+" is not found")
+        
+        
             
     def search_byName(self,fullName):
         """
-        Search for a user by their ID using a linear search algorithm.
+        Search for a user by their name using a linear search algorithm.
 
         Parameters: 
                   fullName : The Name of the user to search for.
@@ -500,8 +510,8 @@ class Users:
         "6 - Add new post\n"
         "7 - Add new Interest\n"
         "8 - Show all users by name\n"
-        "9- Search for friend by name\n"
-        "10 - Search for friend by ID\n"
+        "9- Search for user by name\n"
+        "10 - Search for user by ID\n"
         "11 - BFS Traversal\n"
         "12 - DFS Traversal\n"
         "13 - Find shortest path between Two users\n"
@@ -509,7 +519,7 @@ class Users:
         "15 - Print out my Social Network\n")
         toExit=("16- Exit")
         
-        return (ifNotLoggedIn+ifLoggedIn+toExit) if isLoggedIn else ifNotLoggedIn
+        return (ifNotLoggedIn+ifLoggedIn+toExit) if isLoggedIn else ifNotLoggedIn+toExit
     
 
     
