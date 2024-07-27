@@ -68,7 +68,7 @@ def main():
          elif(choice==7):
             adding_Interest=input('Enter an interest: ')
             U1.update_interests_forUser(logged_in_user,adding_Interest)
-            print(f'Your posts are:{logged_in_user.interests}')
+            print(f'Your Interests are:{logged_in_user.interests}')
             print(Users.displayMenu(logged_in_user!=None))
             choice=int(input('Please enter your choice: '))
 
