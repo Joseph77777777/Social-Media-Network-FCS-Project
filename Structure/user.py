@@ -73,7 +73,7 @@ class User:
         Return a string representing  the user, including their ID, name, posts, interests, and friends.
         """
         friendsList=" "
-        for friend_Id,friend_Name in self.friendsList:
+        for friend_Id,friend_Name,_ in self.friendsList:
             friendsList+="ID: "+str(friend_Id)+"/"+friend_Name+","
         return "User(" + str(self.userId) + ", " + self.fullName +","+str(self.posts) + ","+str(self.interests) +", Friends: [" + friendsList + "])"
     

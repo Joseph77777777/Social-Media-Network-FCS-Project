@@ -93,13 +93,17 @@ class Users:
             #Caluculating middle value 
             mid=(low+high)/2
             mid=(math.ceil(mid))
+            
+
             if(userId==self.list_of_users[mid].userId):
-                #Returning the userId if founded
+                #Returning the userId if found
                 return self.list_of_users[mid]
             elif(userId>self.list_of_users[mid].userId):
                 low=mid+1
+                
             else:
                 high=mid-1
+                
         #print a message if the userId is not found
         print("The user with ID "+str(userId)+" is not found")
         
@@ -366,7 +370,7 @@ class Users:
                 #restore the user object 
                 user=self.list_of_users[userId]
                 # Iterating through the friends list of the user
-                for friend,_ in user.friendsList:
+                for friend,_,_ in user.friendsList:
                     #If the friend is not in the visited set
                     if friend not in visited:
                         #Add the friend to the queue 
@@ -401,7 +405,7 @@ class Users:
                 #restore the user object 
                 user=self.list_of_users[userId]
                 # Iterating through the friends list of the user
-                for friend, _ in user.friendsList:
+                for friend, _ ,_ in user.friendsList:
                     #If the friend is not in the visited set
                     if friend not in visited:
                         #Add the friend to the stack
