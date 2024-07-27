@@ -506,9 +506,10 @@ class Users:
         "12 - DFS Traversal\n"
         "13 - Find shortest path between Two users\n"
         "14 - Suggest top 4 new friends based on common interests\n"
-        "15 - Print out my Social Network")
-
-        return (ifNotLoggedIn+ifLoggedIn) if isLoggedIn else ifNotLoggedIn
+        "15 - Print out my Social Network\n")
+        toExit=("16- Exit")
+        
+        return (ifNotLoggedIn+ifLoggedIn+toExit) if isLoggedIn else ifNotLoggedIn
     
 
     
